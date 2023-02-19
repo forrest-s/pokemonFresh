@@ -1,6 +1,7 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
+import { Container } from '../../components/Layout.tsx';
 
-interface User {
+interface Pokemon {
   name: string;
   weight: number;
   forms: Array<{
@@ -124,20 +125,19 @@ interface User {
   };
 }   
 
-export const handler: Handlers<User | null> = {
+export const handler: Handlers<Pokemon | null> = {
   async GET(_, ctx) {
     const { name } = ctx.params;
     const resp = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
     if (resp.status === 404) {
       return ctx.render(null);
     }
-    const user: User = await resp.json();
-    console.log(user)
-    return ctx.render(user);
+    const pokemon: Pokemon = await resp.json();
+    return ctx.render(pokemon);
   },
 };
 
-export default function Page({ data }: PageProps<User | null>) {
+export default function Page({ data }: PageProps<Pokemon | null>) {
   if (!data) {
     return <h1>User not found</h1>;
   }
@@ -146,10 +146,24 @@ export default function Page({ data }: PageProps<User | null>) {
     return <p>{each.base_stat}, {each.effort}, {each.stat.name}</p>
   })
 
+  const meta = {
+    title: "Some Meta Title",
+    description: "I am a description, and I can create multiple tags",
+    canonical: "http://example.com/path/to/page",
+    meta: {
+      charset: "utf-8",
+      name: {
+        keywords: "react,meta,document,html,tags",
+      },
+    },
+  };
+
   return (
-    <div>
-      <h1>{data.name}</h1>
-      {stats}
-    </div>
+    <>
+      <Container {...meta}>
+        <h1>{data.name}</h1>
+        {stats}
+      </Container>
+    </>
   );
 }
