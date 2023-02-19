@@ -54,9 +54,7 @@ export default function Home(props: any) {
   return (
     <>
       <Container {...meta}>
-       
-         <h1>Welcome to the pokemon viewing website</h1>
-      
+        <h1>Welcome to the pokemon viewing website</h1>
       </Container>
     </>
   );

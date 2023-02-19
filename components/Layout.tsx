@@ -30,11 +30,16 @@ export type Props = {
 export const Container = ({ children, ...customMeta }: Props) => {
   return (
     <>
-      <section style={{ minHeight: "100vh" }}>
-        <Seo {...customMeta} />
-        <div className="container">{children}</div>
+      <Seo {...customMeta} />
+      <nav class='w-full flex gap-2'>
+        <a href='/'>Home</a>
+        <a href='/pokemon'>Pokemon</a>
+        <a href='/names'>Names</a>
+      </nav>
+      <main style={{ minHeight: "100vh" }}>
+        <section className="container">{children}</section>
         {/* <Footer /> */}
-      </section>
+      </main>
     </>
   );
 };
@@ -48,18 +53,11 @@ const Seo = ({ ...customMeta }) => {
   };
 
   return (
-    <>
       <Head>
         <title>{meta.title}</title>
         <meta content={meta.description} name="description" />
         <link rel="icon" href="/favicon.ico" />
         {/* add javascript css what ever you want */}
       </Head>
-      <nav>
-        <a href='/'>Home</a>
-        <a href='/pokemon'>Pokemon</a>
-        <a href='/names'>Names</a>
-      </nav>
-    </>
   );
 };
