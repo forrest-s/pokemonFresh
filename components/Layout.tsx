@@ -1,21 +1,3 @@
-// import { Head, asset } from "$fresh/runtime.ts";
-// import { type ComponentChildren } from "preact";
-
-// export default function Layout(props: { children?: ComponentChildren }) {
-//   return (
-//     <>
-//       <Head>
-//         <link rel="stylesheet" href={asset("/global.css")} />
-//       </Head>
-//       <nav>
-//         <h1>navigation</h1>
-//       </nav>
-//       {props.children}
-//     </>
-//   );
-// }
-
-
 import { ComponentChildren } from "preact";
 import { Head } from "$fresh/runtime.ts";
 // import Footer from "../../components/Footer.tsx";
@@ -27,17 +9,17 @@ export type Props = {
   description?: string;
 };
 
-export const Container = ({ children, ...customMeta }: Props) => {
+export const Layout = ({ children, ...customMeta }: Props) => {
   return (
     <>
       <Seo {...customMeta} />
-      <nav class='w-full flex gap-2'>
+      <nav class='w-full flex gap-20 justify-center border-b-2 border-black'>
         <a href='/'>Home</a>
         <a href='/pokemon'>Pokemon</a>
         <a href='/names'>Names</a>
       </nav>
-      <main style={{ minHeight: "100vh" }}>
-        <section className="container">{children}</section>
+      <main class='h-auto'>
+        {children}
         {/* <Footer /> */}
       </main>
     </>

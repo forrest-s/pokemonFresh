@@ -1,4 +1,4 @@
-import { Container } from "../../components/Layout.tsx";
+import { Layout } from "../../components/Layout.tsx";
 // deno-lint-ignore no-explicit-any
 export default function Home(props: any) {
   const meta = {
@@ -14,11 +14,11 @@ export default function Home(props: any) {
   };
   return (
     <>
-      <Container {...meta}>
+      <Layout {...meta}>
        
-         <h1>Names endpoint</h1>
-      
-      </Container>
+        <h1>Names endpoint</h1>
+
+      </Layout>
     </>
   );
 }

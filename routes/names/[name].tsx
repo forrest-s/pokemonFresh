@@ -1,5 +1,5 @@
 import { PageProps } from "$fresh/server.ts";
-import { Container } from "../../components/Layout.tsx"
+import { Layout } from "../../components/Layout.tsx"
 
 export default function Greet(props: PageProps) {
   const meta = {
@@ -17,8 +17,8 @@ export default function Greet(props: PageProps) {
 
   return (
     <>
-      <Container {...meta}>
+      <Layout {...meta}>
         <h1>Hello {props.params.name}</h1>
-      </Container>
+      </Layout>
     </>);
 }

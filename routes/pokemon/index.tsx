@@ -1,4 +1,4 @@
-import { Container } from "../../components/Layout.tsx";
+import { Layout } from "../../components/Layout.tsx";
 import { Handlers, PageProps  } from "$fresh/server.ts";
 
 interface AllPokemon {
@@ -40,13 +40,12 @@ export default function Page({ data }: PageProps<AllPokemon | null>) {
   
   return (
     <>
-      <Container {...meta}>
+      <Layout {...meta}>
         <h1>This is the start of the pokemon page</h1>
         <section class='flex flex-col'>
-            <h2>click on a pokemon to view</h2>
             {pokemon}
         </section>
-      </Container>
+      </Layout>
     </>
   );
 }

@@ -1,5 +1,5 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
-import { Container } from '../../components/Layout.tsx';
+import { Layout } from '../../components/Layout.tsx';
 
 interface Pokemon {
   name: string;
@@ -30,7 +30,23 @@ interface Pokemon {
     url: string;
   };
   order: number;
-  moves: Array<string>;
+  moves: Array<{
+    move: {
+      name: string;
+      url: string;
+    };
+    version_group_details: Array<{
+      level_learned_at: number;
+      move_learn_method: {
+        name: string;
+        url: string;
+      };
+      version_group: {
+        name: string;
+        url: string;
+      };
+    }>;
+  }>;
   id: number;
   held_items: Array<{
     item: {
@@ -142,6 +158,15 @@ export default function Page({ data }: PageProps<Pokemon | null>) {
     return <h1>User not found</h1>;
   }
 
+  const moves = data.moves.map(each => {
+    // const allMoves = each.version_group_details.map(each => {
+    //   return <p>{each.move_learn_method.name}</p>
+    // })
+    return <p>{each.move.name}</p>
+  })
+  const types = data.types.map(each => {
+    return <p>{each.type.name}</p>
+  })
   const stats = data.stats.map(each => {
     return <p>{each.base_stat}, {each.effort}, {each.stat.name}</p>
   })
@@ -159,11 +184,19 @@ export default function Page({ data }: PageProps<Pokemon | null>) {
   };
 
   return (
-    <>
-      <Container {...meta}>
-        <h1>{data.name}</h1>
-        {stats}
-      </Container>
-    </>
+      <Layout {...meta}>
+        <article class='grid grid-cols-2 justify-items-center'>
+          <header class='col-start-1 col-end-3'>
+            <h1>{data.name}</h1>
+            {types}
+          </header>
+          <section class='col-start-1'>
+            {stats}
+          </section>
+          <section class='col-start-2'>
+            {moves}
+          </section>
+        </article>
+      </Layout>
   );
 }
