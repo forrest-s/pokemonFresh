@@ -26,8 +26,7 @@ export const handler: Handlers<AllPokemon | null> = {
 export default function Page({ data }: PageProps<AllPokemon | null>) {
   const meta = {
     title: "Pokemon Fresh",
-    description: "I am a description, and I can create multiple tags",
-    canonical: "http://example.com/path/to/page",
+    description: "A selectable list of all current pokemon. Retrieved from pokeapi.co",
     meta: {
       charset: "utf-8",
       name: {
@@ -36,16 +35,14 @@ export default function Page({ data }: PageProps<AllPokemon | null>) {
     },
   };
 
-  const pokemon = data ? data.results.map(each => <a href={`pokemon/${each.name}`}>{each.name}</a>) : <p>loading pokemon</p>
+  const pokemon = data ? data.results.map(each => <a class='border-solid border-2 border-red-400 rounded m-2' href={`pokemon/${each.name}`}>{each.name}</a>) : <p>loading pokemon</p>
   
   return (
-    <>
-      <Layout {...meta}>
-        <h1>This is the start of the pokemon page</h1>
-        <section class='flex flex-col'>
-            {pokemon}
-        </section>
-      </Layout>
-    </>
+    <Layout {...meta}>
+      <h1 class='text-2xl text-center underline'>Select a pokemon to view</h1>
+      <section class='grid grid-cols-5 text-center'>
+          {pokemon}
+      </section>
+    </Layout>
   );
 }

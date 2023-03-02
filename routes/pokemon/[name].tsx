@@ -174,7 +174,6 @@ export default function Page({ data }: PageProps<Pokemon | null>) {
   const meta = {
     title: "Some Meta Title",
     description: "I am a description, and I can create multiple tags",
-    canonical: "http://example.com/path/to/page",
     meta: {
       charset: "utf-8",
       name: {
@@ -185,7 +184,7 @@ export default function Page({ data }: PageProps<Pokemon | null>) {
 
   return (
       <Layout {...meta}>
-        <article class='grid grid-cols-2 justify-items-center'>
+        <article class='grid grid-cols-2 grid-rows-[10%_auto] justify-items-center overflow-scroll'>
           <header class='col-start-1 col-end-3'>
             <h1>{data.name}</h1>
             {types}
@@ -193,10 +192,10 @@ export default function Page({ data }: PageProps<Pokemon | null>) {
           <section class='col-start-1'>
             {stats}
           </section>
-          <section class='col-start-2'>
+          <section class='col-start-2 overflow-scroll grid grid-cols-3'>
             {moves}
           </section>
-        </article>
+        </article>  
       </Layout>
   );
 }
