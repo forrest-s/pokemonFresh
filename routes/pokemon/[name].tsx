@@ -153,7 +153,7 @@ export const handler: Handlers<Pokemon | null> = {
   },
 };
 
-export default function Page({ data }: PageProps<Pokemon | null>) {
+export default function Page({ data }: PageProps<Pokemon | null>) {  
   if (!data) {
     return <h1>User not found</h1>;
   }
@@ -171,9 +171,11 @@ export default function Page({ data }: PageProps<Pokemon | null>) {
     return <p>{each.base_stat}, {each.effort}, {each.stat.name}</p>
   })
 
+  const games = data.game_indices.map(each => each.version.name)
+
   const meta = {
-    title: "Some Meta Title",
-    description: "I am a description, and I can create multiple tags",
+    title: data.name,
+    description: `This is the pokemon infomation page for ${data.name}. This pokemon is from the pokemon ${games.length > 1 ? 'games' : 'game'} ${games}.`,
     meta: {
       charset: "utf-8",
       name: {
