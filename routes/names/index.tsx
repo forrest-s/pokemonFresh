@@ -1,4 +1,5 @@
 import { Layout } from "../../components/Layout.tsx";
+
 // deno-lint-ignore no-explicit-any
 export default function Home(props: any) {
   const meta = {
@@ -17,6 +18,19 @@ export default function Home(props: any) {
       <Layout {...meta}>
        
         <h1>Names endpoint</h1>
+        <form
+          name='name'
+          onSubmit={(event) => {
+            event.preventDefault();
+            const input = document.querySelector("input[name='name']") as HTMLInputElement;
+            const inputName = document.getElementById('inputName')
+            window.location.href = `${window.location.href}/${inputName}`;
+          }}
+        >
+          <label htmlFor="name">Type in a name:</label>
+          <input id='inputName' type="text" name="name" defaultValue="" />
+          <button type="submit">Submit</button>
+        </form>
 
       </Layout>
     </>

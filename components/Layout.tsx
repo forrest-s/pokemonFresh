@@ -1,5 +1,5 @@
 import { ComponentChildren } from "preact";
-import { Head } from "$fresh/runtime.ts";
+import { Head, asset } from "$fresh/runtime.ts";
 // import Footer from "../../components/Footer.tsx";
 
 export type Props = {
@@ -39,6 +39,7 @@ const Seo = ({ ...customMeta }) => {
         <title>{meta.title}</title>
         <meta content={meta.description} name="description" />
         <link rel="icon" href="/favicon.ico" />
+        <link rel="stylesheet" href={asset("/poke.css")} type='text/css' />
         {/* add javascript css what ever you want */}
       </Head>
   );
