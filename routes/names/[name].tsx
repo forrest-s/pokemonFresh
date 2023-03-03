@@ -1,6 +1,7 @@
-import { Layout } from "../components/Layout.tsx";
-// deno-lint-ignore no-explicit-any
-export default function Home(props: any) {
+import { PageProps } from "$fresh/server.ts";
+import { Layout } from "../../components/Layout.tsx"
+
+export default function Greet(props: PageProps) {
   const meta = {
     title: "Some Meta Title",
     description: "I am a description, and I can create multiple tags",
@@ -12,10 +13,12 @@ export default function Home(props: any) {
       },
     },
   };
+
+
   return (
+    <>
       <Layout {...meta}>
-        <h1>Welcome to the pokemon viewing website</h1>
-        <p>Checkout out the pokemon link to view all pokemon.</p>
+        <h1>Hello {props.params.name}</h1>
       </Layout>
-  );
+    </>);
 }
