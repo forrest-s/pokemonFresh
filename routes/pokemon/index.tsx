@@ -41,7 +41,7 @@ export default function Page({ data }: PageProps<AllPokemon | null>) {
     <Layout {...meta}>
       <section>
           <h1 class='text-2xl text-center underline'>Select a pokemon to view</h1>
-          <section class='grid grid-cols-5 text-center'>
+          <section class='grid grid-cols-3 sm:grid-cols-5 text-center'>
             {pokemon}
           </section>
       </section>

@@ -158,26 +158,23 @@ export default function Page({ data }: PageProps<Pokemon | null>) {
     return <h1>User not found</h1>;
   }
 
-  const forms = data.held_items.map(each => <p>{each.item.name}</p>)
-
-  const moves = data.moves.map(each => {
-    // const allMoves = each.version_group_details.map(each => {
-    //   return <p>{each.move_learn_method.name}</p>
-    // })
-    return <p>{each.move.name}</p>
-  })
-  const types = data.types.map(each => {
-    return <p>{each.type.name}</p>
-  })
-  const stats = data.stats.map(each => {
-    return <p>{each.base_stat}, {each.effort}, {each.stat.name}</p>
-  })
-
-  const abilities = data.abilities.map(each => {
-    return <p>{each.ability.name}</p>
-  })
-
   const games = data.game_indices.map(each => each.version.name)
+
+  function createMoveDiv(move: string) {
+    return <div className='blue-square'>{move}</div>;
+  }
+  
+  // deno-lint-ignore no-explicit-any
+  function createMoveDivs(moves: any[]) {
+    const divs = moves.map((moveObj) => moveObj.move.name || '');
+    while (divs.length < 8) {
+      divs.push('');
+    }
+    return divs.slice(0, 8).map((move) => createMoveDiv(move));
+  }
+  
+  const moveObjects = data.moves;
+  const moveDivs = createMoveDivs(moveObjects);
 
   const meta = {
     title: data.name,
@@ -305,18 +302,20 @@ export default function Page({ data }: PageProps<Pokemon | null>) {
               <div class="top-screen-container">
                 <div id="about-screen" class="right-panel-screen">
                   <section>
-                    <p>Height: {data.height}cm</p>
-                    <p>Weight: {data.weight}kg</p>
+                    <p><strong>Height:</strong> {data.height}cm</p>
+                    <p><strong>Weight:</strong> {data.weight}kg</p>
                   </section>
                   <section>
-                    <p>Base XP: {data.base_experience}hp</p>
-                    <p>Abilities: {data.abilities.reduce((acc, curr, idx, arr) => idx === arr.length - 1 ? `${acc}${curr.ability.name}` : `${acc}${curr.ability.name}, `, '')}</p>
+                    <p><strong>Base XP:</strong> {data.base_experience}hp</p>
+                    <p><strong>Abilities:</strong> {data.abilities.reduce((acc, curr, idx, arr) => idx === arr.length - 1 ? `${acc}${curr.ability.name}` : `${acc}${curr.ability.name}, `, '')}</p>
                   </section>
                 </div>
               </div>
               {/* <!-- Blue Buttons --> */}
               <div class="square-buttons-container">
                 <div class="blue-squares-container">
+                  {moveDivs}
+                  {/* <div class="blue-square"></div>
                   <div class="blue-square"></div>
                   <div class="blue-square"></div>
                   <div class="blue-square"></div>
@@ -325,8 +324,7 @@ export default function Page({ data }: PageProps<Pokemon | null>) {
                   <div class="blue-square"></div>
                   <div class="blue-square"></div>
                   <div class="blue-square"></div>
-                  <div class="blue-square"></div>
-                  <div class="blue-square"></div>
+                  <div class="blue-square"></div> */}
                 </div>
               </div>
               {/* <!-- Center Buttons --> */}
@@ -357,7 +355,7 @@ export default function Page({ data }: PageProps<Pokemon | null>) {
               </div>
               {/* <!-- Bottom screens --> */}
               <div class="bottom-screens-container">
-                <div id="type-screen" class="right-panel-screen">{types}</div>
+                <div id="type-screen" class="right-panel-screen">{data.types.reduce((acc, curr, idx, arr) => idx === arr.length - 1 ? `${acc}${curr.type.name}` : `${acc}${curr.type.name}, `, '')}</div>
                 <div id="id-screen" class="right-panel-screen">{data.id}</div>
               </div>
             </div>
