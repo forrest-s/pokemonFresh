@@ -39,9 +39,11 @@ export default function Page({ data }: PageProps<AllPokemon | null>) {
   
   return (
     <Layout {...meta}>
-      <h1 class='text-2xl text-center underline'>Select a pokemon to view</h1>
-      <section class='grid grid-cols-5 text-center'>
-          {pokemon}
+      <section>
+          <h1 class='text-2xl text-center underline'>Select a pokemon to view</h1>
+          <section class='grid grid-cols-5 text-center'>
+            {pokemon}
+          </section>
       </section>
     </Layout>
   );

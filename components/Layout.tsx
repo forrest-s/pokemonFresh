@@ -16,7 +16,6 @@ export const Layout = ({ children, ...customMeta }: Props) => {
       <nav class='w-full flex gap-20 justify-center border-b-2 border-black'>
         <a href='/'>Home</a>
         <a href='/pokemon'>Pokemon</a>
-        <a href='/names'>Names</a>
       </nav>
       <main class='h-auto'>
         {children}
