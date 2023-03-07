@@ -6,6 +6,15 @@
     --main-buttons-color: #585858;
     --square-buttons-color: #7ca9f7;
   }
+
+  #about-screen {
+    display: flex;
+  }
+
+  #about-screen section {
+    text-align: center;
+    line-height: 1.23;
+  }
   
   .red {
     background-color: #ff0000;
@@ -284,7 +293,7 @@
     /* background-image: url(https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png); */
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 132%;
+    background-size: 100%;
   }
   
   .bottom-screen-lights {

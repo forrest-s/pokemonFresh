@@ -192,29 +192,7 @@ export default function Page({ data }: PageProps<Pokemon | null>) {
 
   return (
       <Layout {...meta}>
-        {/* <article class='grid grid-cols-2 grid-rows-[10%_auto] justify-items-center overflow-scroll'>
-          <header class='col-start-1 col-end-3'>
-            <h1>{data.name}</h1>
-            <section class='border-2 border-purple-400 rounded p-2'>
-              {types}
-            </section>
-          </header>
-          <section class='col-start-1 flex flex-col gap-2'>
-            <section class='border-2 border-red-400 rounded p-2'>
-            {stats}
-            </section>
-            <section class='border-2 border-green-400 rounded p-2'>
-              {abilities}
-            </section>
-            <section class='border-2 border-blue-400 rounded p-2'>
-              {forms}
-            </section>
-          </section>
-          <section class='col-start-2 overflow-scroll grid grid-cols-3'>
-            {moves}
-          </section>
-        </article> */}
-      <article id='pokedexLayout'>
+        <article id='pokedexLayout'>
             <div id="pokedex">
             {/* <!-- Left Panel --> */}
             <div id="left-panel">
@@ -326,7 +304,14 @@ export default function Page({ data }: PageProps<Pokemon | null>) {
               {/* <!-- Top screen --> */}
               <div class="top-screen-container">
                 <div id="about-screen" class="right-panel-screen">
-                  Height: {data.height}cm Weight: {data.weight}kg
+                  <section>
+                    <p>Height: {data.height}cm</p>
+                    <p>Weight: {data.weight}kg</p>
+                  </section>
+                  <section>
+                    <p>Base XP: {data.base_experience}hp</p>
+                    <p>Abilities: {data.abilities.reduce((acc, curr, idx, arr) => idx === arr.length - 1 ? `${acc}${curr.ability.name}` : `${acc}${curr.ability.name}, `, '')}</p>
+                  </section>
                 </div>
               </div>
               {/* <!-- Blue Buttons --> */}
