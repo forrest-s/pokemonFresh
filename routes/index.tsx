@@ -14,7 +14,7 @@ export default function Home(props: any) {
   };
   return (
       <Layout {...meta}>
-        <article class='flex flex-col items-center w-1/2'>
+        <article class='flex flex-col gap-2 items-center w-1/2 pt-10'>
           <h1>Welcome to the pokemon viewing website</h1>
           <p>Checkout out the pokemon link to view all pokemon.</p>
           <p>Pokemon list and information gathered from <a class='hover:underline' href='https://pokeapi.co/' target='_blank' alt='poke api link'>PokeApi</a></p>
