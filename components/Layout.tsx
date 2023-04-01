@@ -13,9 +13,9 @@ export const Layout = ({ children, ...customMeta }: Props) => {
   return (
     <>
       <Seo {...customMeta} />
-      <nav class='w-full flex gap-20 justify-center border-b-2 border-black'>
-        <a href='/'>Home</a>
-        <a href='/pokemon'>Pokemon</a>
+      <nav class='w-full h-10 md:h-16 flex gap-20 items-center justify-center bg-[#CC0000]'>
+        <a class='text-[#FFDE00] hover:text-[#B3A125]' href='/'>Home</a>
+        <a class='text-[#FFDE00] hover:text-[#B3A125]' href='/pokemon'>Pokemon</a>
       </nav>
       <main class='h-auto'>
         {children}

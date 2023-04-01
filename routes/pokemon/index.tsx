@@ -35,7 +35,7 @@ export default function Page({ data }: PageProps<AllPokemon | null>) {
     },
   };
 
-  const pokemon = data ? data.results.map(each => <a class='border-solid border-2 border-red-400 rounded m-2 hover:text-xl' href={`pokemon/${each.name}`}>{each.name}</a>) : <p>loading pokemon</p>
+  const pokemon = data ? data.results.map(each => <a class='border-solid border-2 border-[#CC0000] bg-[#FFDE00] text-[#3B4CCA] rounded p-2 m-2 hover:bg-[#B3A125]' href={`pokemon/${each.name}`}>{each.name}</a>) : <p>loading pokemon</p>
   
   return (
     <Layout {...meta}>
