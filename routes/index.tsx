@@ -13,7 +13,7 @@ export default function Home(props: any) {
     },
   };
 
-  const cardStyle = `rounded border-2 border-[#CC0000] p-1 lg:w-1/2 w-5/6`
+  const cardStyle = `rounded border-2 border-[#CC0000] p-2 lg:w-1/2 w-5/6`
   
   return (
       <Layout {...meta}>
